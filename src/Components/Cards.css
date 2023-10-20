@@ -1,41 +1,28 @@
 .card{
-    width: 250px;
+    width: 23%;
     min-height: 500px;
 }
 .card img{
    max-width: 100%;
    height: 50%;
+   object-fit: cover;
 }
-.card-container{
-    width: max-content;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    background-color: rgb(233, 233, 233);
-    gap: 20px;
-    
-    padding: 20px;
+.cartbutton{
+    width: 200px;
 }
-.w-25{
-    width: 20%!important;
-}
-.start-100{
-    left:88.5%!important;
-}
-.mt-6{
-    margin-top:150px;
-}
-.h-200{
-    height: 300px!important;
-}
-.w-10{
-    min-width: 5vw!important;
-    max-height: 5vh!important;
-    transition: 0.3s;
+.cartbox{
+    width: 250px;
 }
 .hover:hover{
     transition: 0.3s ease-in-out;
     background-color: rgb(236, 236, 236);
+}
+@media screen and (max-width: 1200px) {
+    .cartbutton{
+        left: 0!important;
+        top: 30vh;
+        min-width: 10vw!important;
+        max-width: 20vw!important;
+        margin-left: 3rem;
+    }
 }

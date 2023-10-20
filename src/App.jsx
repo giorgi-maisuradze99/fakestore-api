@@ -14,7 +14,6 @@ function App() {
     setData(d)
     setOriginalData(d)
   }
-
   useEffect(() => {
     fetchData()
   }, []);
@@ -39,7 +38,7 @@ function App() {
 
 
   return (
-    <>  
+    <div class='glavni'>  
     <nav class="navbar shadow-lg navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -80,17 +79,68 @@ function App() {
         </div>
       </div>
     </nav>        
-    <ul class="list-group position-absolute w-25 mt-4 ms-5">
-      <li class="list-group-item active" onClick={()=>fetchData()}>Categories</li>
-      <li class="list-group-item" onClick={()=>fetchData()}>All</li>
-      <li class="list-group-item" onClick={()=>handleCategoryChange('jewelery')}>Jewelery</li>
-      <li class="list-group-item" onClick={()=>handleCategoryChange('electronics')}>Electronics</li>
-      <li class="list-group-item" onClick={()=>handleCategoryChange("men's clothing")}>Men</li>
-      <li class="list-group-item" onClick={()=>handleCategoryChange("women's clothing")}>Women</li>
-    </ul>
-    <Cards data={data}/>
 
-    </>
+
+    <div class="">
+        <div class="row m-0 ">
+          <div className="col-2 d-flex flex-column align-items-center">
+
+          <ul class="category list-group m-4">
+            <li class="list-group-item bg-primary text-white" onClick={()=>fetchData()}>Categories</li>
+            <li class="list-group-item" onClick={()=>fetchData()}>All</li>
+            <li class="list-group-item" onClick={()=>handleCategoryChange('jewelery')}>Jewelery</li>
+            <li class="list-group-item" onClick={()=>handleCategoryChange('electronics')}>Electronics</li>
+            <li class="list-group-item" onClick={()=>handleCategoryChange("men's clothing")}>Men</li>
+            <li class="list-group-item" onClick={()=>handleCategoryChange("women's clothing")}>Women</li>
+          </ul>
+          <div className="d-flex">
+            <button type="button" class="btn buttonl btn-success me-2  mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Log In</button>
+            <button type="button" class="btn buttonl btn-danger mt-5">Log Out</button>
+
+          </div>
+          
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Log In</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-floating mt-1 mb-3">
+                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+                          <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating">
+                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+                          <label for="floatingPassword">Password</label>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-success">Log In</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+          </div>
+          <div className="col-10">
+            <Cards data={data}/>
+          </div>
+
+
+
+        </div>
+    </div>
+    
+
+
+
+    </div>
   )
 }
 
