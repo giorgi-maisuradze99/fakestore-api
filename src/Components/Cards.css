@@ -24,3 +24,13 @@
 .start-100{
     left:88.5%!important;
 }
+.mt-6{
+    margin-top:150px;
+}
+.h-200{
+    height: 300px!important;
+}
+.w-10{
+    min-width: 5vw!important;
+    max-height: 8vw!important;
+}
