@@ -50,13 +50,21 @@ function Cards(props) {
                         )
                     })}
             </div> 
+            
+            {/* Cart Opener Button */}
+            
             <button class='btn btn-primary w-25 position-relative translate-middle mt-5 start-100' onClick={()=>setOpenCart(!openCart)}>Cart</button>
+
+
+            {/* Cart Code */}
+
             <div class={openCart ? 'w-25 position-relative translate-middle mt-6 start-100 shadow-lg overflow-scroll h-200 overflow-x-hidden' : 'd-none'}>
                     {cartList.map((cartItem)=>{
                         return(
-                            <div class='d-flex c-pointer mb-2 justify-content-between pe-2' onClick={()=>removeCartItem(cartItem.id)}>
+                            <div class='d-flex position-relative justify-content-between mb-2 pe-2 pt-2 hover' onClick={()=>removeCartItem(cartItem.id)}>
                                 <img src={cartItem.image} class='w-10'/>
-                                <p class='ms-5'>{cartItem.title}</p>
+                                <p class='text-center'>{cartItem.title}</p>
+                                <p class='text-danger'>${cartItem.price}</p>
                             </div>
                         )
                     })}

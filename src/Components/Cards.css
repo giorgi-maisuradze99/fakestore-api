@@ -1,6 +1,6 @@
 .card{
     width: 250px;
-    height: 500px;
+    min-height: 500px;
 }
 .card img{
    max-width: 100%;
@@ -32,5 +32,10 @@
 }
 .w-10{
     min-width: 5vw!important;
-    max-height: 8vw!important;
+    max-height: 5vh!important;
+    transition: 0.3s;
+}
+.hover:hover{
+    transition: 0.3s ease-in-out;
+    background-color: rgb(236, 236, 236);
 }

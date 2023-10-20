@@ -6,19 +6,37 @@ import Cards from './Components/Cards'
 function App() {
   const [searchInput, setSearchInput] = useState('')
   const [data, setData] = useState([])
-  const fetchData = async () =>{
-      const res = await fetch('https://fakestoreapi.com/products')
-      const d = await res.json()
-      setData(d)
-  }
-  
-  useEffect(()=>{
-      fetchData()
-  },[])
+  const [originalData, setOriginalData] = useState([]) 
 
-  const handleSearchChange = () =>{
-    setSearchInput(searchInput)
+  const fetchData = async () => {
+    const res = await fetch('https://fakestoreapi.com/products')
+    const d = await res.json()
+    setData(d)
+    setOriginalData(d)
   }
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+  const handleCategoryChange = (category) => {
+    const newData = originalData.filter((dataItem) => dataItem.category === category);
+    setData(newData)
+  }
+
+  const handleSearchChange = (event) => {
+    const searchTerm = event.target.value;
+    setSearchInput(searchTerm);
+
+    // Filter data based on search input
+    const newData = originalData.filter((dataItem) =>
+      dataItem.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setData(newData);
+  }
+ 
+
 
   return (
     <>  
@@ -55,13 +73,21 @@ function App() {
               value={searchInput}
               onChange={handleSearchChange}
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-success" type="button">
               Search
             </button>
           </form>
         </div>
       </div>
     </nav>        
+    <ul class="list-group position-absolute w-25 mt-4 ms-5">
+      <li class="list-group-item active" onClick={()=>fetchData()}>Categories</li>
+      <li class="list-group-item" onClick={()=>fetchData()}>All</li>
+      <li class="list-group-item" onClick={()=>handleCategoryChange('jewelery')}>Jewelery</li>
+      <li class="list-group-item" onClick={()=>handleCategoryChange('electronics')}>Electronics</li>
+      <li class="list-group-item" onClick={()=>handleCategoryChange("men's clothing")}>Men</li>
+      <li class="list-group-item" onClick={()=>handleCategoryChange("women's clothing")}>Women</li>
+    </ul>
     <Cards data={data}/>
 
     </>
