@@ -8,21 +8,12 @@
    object-fit: contain;
 }
 .cartbutton{
-    width: 200px;
+    min-width: 100%;
 }
 .cartbox{
-    width: 250px;
+    max-width: 250px;
 }
 .hover:hover{
     transition: 0.3s ease-in-out;
     background-color: rgb(236, 236, 236);
-}
-@media screen and (max-width: 1200px) {
-    .cartbutton{
-        left: 0!important;
-        top: 30vh;
-        min-width: 10vw!important;
-        max-width: 20vw!important;
-        margin-left: 3rem;
-    }
 }
