@@ -10,17 +10,24 @@ function Cards(props) {
     const [openCart, setOpenCart] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState(0)
     const [cartList, setCartList] = useState([])
+    const storedCartItems = JSON.parse(localStorage.getItem('cartList')) 
+    let total = 0;
     let product = data[selectedProduct - 1]
+    for(let i=0; i<storedCartItems.length; i++){
+        total += storedCartItems[i].price;
+    }
     function handleNewCartItem(id){
+        id = id-1;
         const cartItem = {
             title: data[id].title,
             price: data[id].price,
             id: id,
         }   
-        setCartList((cartList)=>{
-            return [...cartList, cartItem]
-        })
-        localStorage.setItem('cartList', JSON.stringify(cartList))
+        setCartList((cartList) => {
+            const newCartList = [...cartList, cartItem];
+            localStorage.setItem('cartList', JSON.stringify(newCartList));
+            return newCartList;
+        });
 
     }
 
@@ -67,16 +74,16 @@ function Cards(props) {
                 {/* Cart Code */}
                 <div class={openCart ? 'cartbox  mt-2 shadow-lg overflow-scrolloverflow-x-hidden w-100 p-3' : 'd-none'}>
                         
-                       { cartList.length ?
-                        <div> {cartList.map((cartItem)=>{
+                       { storedCartItems.length ?
+                        <div> {storedCartItems.map((cartItem)=>{
                             return(
                                 <div key={cartItem.id} class='d-flex position-relative justify-content-between align-items-center mb-2 px-2 hover rounded' onClick={()=>removeCartItem(cartItem.id)}>
-                                    <img src={cartItem.image} class='w-10'/>
                                     <p class='text-center'>{cartItem.title}</p>
                                     <p class='text-danger ms-2'>${cartItem.price}</p>
                                 </div>
                             )
                         })} 
+                        <p>Total : {Math.floor(total)} $</p>
                         </div> 
                         :
                         <p>No items in the cart</p> }

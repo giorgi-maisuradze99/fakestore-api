@@ -101,9 +101,8 @@ function App() {
     <div class="">
         <div class="row m-0 ">
 
-          {/* Category Selection  */}
-          <div className="col-2 d-flex flex-column align-items-center">
-            {/* Categories  */}
+          {/* Categories  */}
+          <div id='category-container' className="col-2 d-flex flex-column align-items-center">
             <ul class="category list-group m-4 w-100">
               <li class="list-group-item bg-primary text-white" onClick={()=>fetchData()}>Categories</li>
               <li class="list-group-item" onClick={()=>fetchData()}>All</li>
@@ -114,10 +113,9 @@ function App() {
             </ul>
 
           {/* Open Login OR Logout */}
-          <div className="d-flex flex-column w-100">
+          <div id='auth-container' className="d-flex flex-column w-100">
             <button type="button" class="btn buttonl btn-success me-2 mt-5 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Log In</button>
             <button type="button" class="btn buttonl btn-danger mt-5 w-100" onClick={handleLogout}>Log Out</button>
-
           </div>
           
           {/* Login Modal  */}
