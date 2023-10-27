@@ -74,7 +74,7 @@ function Cards(props) {
                 {/* Cart Code */}
                 <div class={openCart ? 'cartbox  mt-2 shadow-lg overflow-scrolloverflow-x-hidden w-100 p-3' : 'd-none'}>
                         
-                       { storedCartItems.length ?
+                       { cartList.length ?
                         <div> {storedCartItems.map((cartItem)=>{
                             return(
                                 <div key={cartItem.id} class='d-flex position-relative justify-content-between align-items-center mb-2 px-2 hover rounded' onClick={()=>removeCartItem(cartItem.id)}>
