@@ -13,8 +13,8 @@ function Cards(props) {
     const storedCartItems = JSON.parse(localStorage.getItem('cartList')) 
     let total = 0;
     let product = data[selectedProduct - 1]
-    for(let i=0; i<storedCartItems.length; i++){
-        total += storedCartItems[i].price;
+    for(let i=0; i<cartList.length; i++){
+        total += cartList[i].price;
     }
     function handleNewCartItem(id){
         id = id-1;
